@@ -1,0 +1,1629 @@
+/*
+0x29    => label_0
+0x2d    => label_1
+0x2f    => label_2
+0x34    => label_3
+0x39    => label_4
+0x3e    => label_5
+0x43    => label_6
+0x48    => label_7
+0x4d    => label_8
+0x52    => label_9
+0x57    => label_10
+0x5c    => label_11
+0x61    => label_12
+0x66    => label_13
+0x6b    => label_14
+0x70    => label_15
+0x75    => label_16
+0x7a    => label_17
+0x7f    => label_18
+0x84    => label_19
+0x89    => label_20
+0x8e    => label_21
+0x93    => label_22
+0x98    => label_23
+0x9d    => label_24
+0xa2    => label_25
+0xa7    => label_26
+0xac    => label_27
+0xb1    => label_28
+0xb6    => label_29
+0xbb    => label_30
+0xc0    => label_31
+0xc5    => label_32
+0xca    => label_33
+0xcf    => label_34
+0xd4    => label_35
+0xd9    => label_36
+0xde    => label_37
+0xe3    => label_38
+0xe8    => label_39
+0xed    => label_40
+0xf2    => label_41
+0xf7    => label_42
+0xfc    => label_43
+0x101   => label_44
+0x1a1   => label_45
+0x269   => label_46
+0x353   => label_47
+0x3ef   => label_48
+0x4b3   => label_49
+0x599   => label_50
+0x635   => label_51
+0x6f9   => label_52
+0x7df   => label_53
+0x851   => label_54
+0x8a8   => label_55
+0x8ab   => label_56
+0x933   => label_57
+0x9b9   => label_58
+0xa4e   => label_59
+0xb27   => label_60
+0xbd8   => label_61
+0xc8f   => label_62
+0xd70   => label_63
+0xd78   => label_64
+0xe02   => label_65
+0xe66   => label_66
+0xeca   => label_67
+0xf5a   => label_68
+0xfe3   => label_69
+0x1062  => label_70
+0x1129  => label_71
+0x11e9  => label_72
+0x1268  => label_73
+0x12db  => label_74
+0x1357  => label_75
+0x150e  => label_76
+0x1563  => label_77
+0x15b8  => label_78
+0x15fa  => label_79
+0x163c  => label_80
+0x1693  => label_81
+0x174e  => label_82
+0x180c  => label_83
+0x18c3  => label_84
+0x1985  => label_85
+0x1a69  => label_86
+0x1b54  => label_87
+0x1c5a  => label_88
+0x1d67  => label_89
+0x1e41  => label_90
+*/
+#define constant MAX_SQRT_PRICE_LIMIT_X96 = 0x000000000000000000000000fffd8963efd1fc6a506488495d951d5263988d1c
+#define constant MIN_SQRT_PRICE_LIMIT_X96 = 0x00000000000000000000000000000000000000000000000000000001000276ad
+#define constant PAIR_INIT_CODE_HASH = 0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54
+
+#define constant WETH = 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+#define constant WETH_32BYTES = 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000
+#define constant USDC = 0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+#define constant USDT = 0xdac17f958d2ee523a2206206994597c13d831ec7
+
+// +-------------------------------------------+
+// |              Functin Sigs                 |
+// +-------------------------------------------+
+// Transfer(address to, uint value)
+#define constant TRANSFER_SIG = 0xa9059cbb00000000000000000000000000000000000000000000000000000000
+// TransferFrom(address from, address to, uint value)
+#define constant TRANSFER_FROM_SIG = 0x23b872dd00000000000000000000000000000000000000000000000000000000
+// Swap(uint amount0Out, uint amount1Out, address to, bytes data)
+#define constant V2_Swap_Sig = 0x022c0d9f00000000000000000000000000000000000000000000000000000000
+// Swap(address recipient, bool zeroForOne, int256 amountSpecified, uint160 sqrtPriceLimitX96, bytes data)
+#define constant V3_SWAP_SIG = 0x128acb0800000000000000000000000000000000000000000000000000000000
+#define constant APPROVE_ERC20_SIG = 0x095ea7b300000000000000000000000000000000000000000000000000000000
+#define constant MINT_SIG = 0x3c8a7d8d00000000000000000000000000000000000000000000000000000000
+#define constant BURN_SIG = 0xa34123a700000000000000000000000000000000000000000000000000000000
+#define constant COLLECT_SIG = 0x4f1eb3d800000000000000000000000000000000000000000000000000000000
+
+// TODO: change to your address
+#define constant SEARCHER_0 = 0xae2fc483527b8ef99eb5d9b44875f005ba1fae13
+
+#define macro MAIN() = takes(0) returns(0) {
+    returndatasize calldataload
+    dup1 returndatasize byte
+    eq
+    [SEARCHER_0] caller eq
+    and
+    label_0 jumpi
+    label_75 jump
+
+label_0:
+    chainid
+    byte
+    jump
+
+stop_handler:
+    stop
+
+label_2:
+    label_44
+    jump
+
+label_3:
+    label_45
+    jump
+
+label_4:
+    label_46
+    jump
+
+label_5:
+    label_47
+    jump
+
+label_6:
+    label_48
+    jump
+
+label_7:
+    label_49
+    jump
+
+label_8:
+    label_50
+    jump
+
+label_9:
+    label_51
+    jump
+
+label_10:
+    label_52
+    jump
+
+label_11:
+    label_53
+    jump
+
+label_12:
+    label_54
+    jump
+
+label_13:
+    label_55
+    jump
+
+label_14:
+    label_56
+    jump
+
+label_15:
+    label_57
+    jump
+
+label_16:
+    label_58
+    jump
+
+label_17:
+    label_59
+    jump
+
+label_18:
+    label_60
+    jump
+
+label_19:
+    label_61
+    jump
+
+label_20:
+    label_62
+    jump
+
+label_21:
+    label_63
+    jump
+
+label_22:
+    label_64
+    jump
+
+label_23:
+    label_65
+    jump
+
+label_24:
+    label_66
+    jump
+
+label_25:
+    label_67
+    jump
+
+label_26:
+    label_68
+    jump
+
+label_27:
+    label_69
+    jump
+
+label_28:
+    label_70
+    jump
+
+label_29:
+    label_71
+    jump
+
+label_30:
+    label_72
+    jump
+
+label_31:
+    label_73
+    jump
+
+label_32:
+    label_74
+    jump
+
+label_33:
+    label_81
+    jump
+
+label_34:
+    label_82
+    jump
+
+label_35:
+    label_83
+    jump
+
+label_36:
+    label_84
+    jump
+
+label_37:
+    label_85
+    jump
+
+label_38:
+    label_86
+    jump
+
+label_39:
+    label_87
+    jump
+
+label_40:
+    label_88
+    jump
+
+label_41:
+    label_89
+    jump
+
+label_42:
+    label_90
+    jump
+
+label_43:
+    stop_handler
+    jump
+
+label_44:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_FROM_SIG] returndatasize mstore
+    address 0x04 mstore
+    callvalue 0x40 mstore
+    dup5 0x24 mstore
+    returndatasize
+    returndatasize
+    0x64
+    returndatasize
+    returndatasize
+    [WETH] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload chainid calldataload
+    chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x0000 dup1 revert
+
+label_45:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_FROM_SIG] returndatasize mstore
+    address 0x04 mstore
+    callvalue 0x40 mstore
+    dup5 0x24 mstore
+    returndatasize
+    returndatasize
+    0x64
+    returndatasize
+    returndatasize
+    [WETH] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload
+    chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    0x1b
+    swap1
+    0x1a calldataload chainid byte
+    jumpi
+    0x00 dup1 revert
+
+label_46:
+    [TRANSFER_FROM_SIG] 0x00 mstore
+    address 0x04 mstore
+    0x00
+    0x00
+    0xa4
+    0x00
+    0x00
+    dup6 0x02 add calldataload 0x60 shr
+    0x00 0x44 mstore
+    dup7 0x1a add calldataload 0xd8 shr 0x40 mstore
+    dup1 0x24 mstore
+    0x00
+    0x00
+    0x64
+    0x00
+    0x00
+    [WETH] gas call
+    pop
+    [V2_Swap_Sig] 0x00 mstore
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    dup7 0x16 add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup8 calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    gas call
+    swap1 0x1f add
+    swap1
+    dup2
+    calldataload 0x00 byte jumpi
+    0x00 dup1 revert
+
+label_47:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    dup5 0x04 mstore
+    callvalue 0x24 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    [USDC] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload chainid calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_48:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    dup5 0x04 mstore
+    callvalue 0x24 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    [USDC] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    0x1b
+    swap1
+    0x1a calldataload chainid byte jumpi
+    0x00 dup1 revert
+
+label_49:
+    [TRANSFER_SIG] 0x00 mstore
+    0x00
+    0x00
+    0xa4
+    0x00
+    0x00
+    dup6 0x02 add calldataload 0x60 shr
+    dup7 0x1a add calldataload 0xd8 shr 0x24 mstore
+    dup1 0x04 mstore
+    0x00
+    0x00
+    0x44
+    0x00
+    0x00
+    [USDC] gas call
+    pop
+    [V2_Swap_Sig] 0x00 mstore
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    dup7 0x16 add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup8 calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    gas call
+    swap1 0x1f add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_50:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03
+    calldataload
+    0x60
+    shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    dup5 0x04 mstore
+    callvalue 0x24 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    [USDT] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload
+    chainid calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_51:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    returndatasize
+    returndatasize
+    [V2_Swap_Sig]
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    dup5 0x04 mstore
+    callvalue 0x24 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    [USDT] gas call
+    pop mstore
+    0x04 mstore
+    0x24 mstore
+    0x17 calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload
+    chainid byte
+    mstore address
+    0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    0x1b
+    swap1
+    0x1a calldataload chainid byte jumpi
+    0x00 dup1 revert
+
+label_52:
+    [TRANSFER_SIG] 0x00 mstore
+    0x00
+    0x00
+    0xa4
+    0x00
+    0x00
+    dup6 0x02 add calldataload 0x60 shr
+    dup7 0x1a add calldataload 0xd8 shr 0x24 mstore
+    dup1 0x04 mstore
+    0x00
+    0x00
+    0x44
+    0x00
+    0x00
+    [USDT] gas call
+    pop
+    [V2_Swap_Sig] 0x00 mstore
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    dup7 0x16 add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup8 calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    gas call
+    swap1 0x1f add
+    swap1
+    dup2 calldataload 0x00 byte jumpi
+    0x00 dup1 revert
+
+label_53:
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    0x17 calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload chainid byte mstore
+    0x1d calldataload 0x60 shr 0x04 mstore
+    0x03 calldataload 0x60 shr
+    gas call
+    0x1b
+    swap1
+    0x1a calldataload chainid byte jumpi
+    0x00 dup1 revert
+
+label_54: // withdraw weth then 
+    callvalue
+    0x2e1a7d4d00000000000000000000000000000000000000000000000000000000
+    add
+    returndatasize mstore
+    returndatasize
+    returndatasize
+    0x24
+    returndatasize
+    returndatasize
+    [WETH] gas call
+    0x00
+    0x00
+    0x00
+    0x00
+    selfbalance
+    caller
+    gas call
+    and
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_55:
+    caller
+    selfdestruct
+
+label_56:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    [V2_Swap_Sig]
+    returndatasize
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    0x2b calldataload
+    chainid calldataload chainid byte mstore
+    dup4 0x04 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    0x17 calldataload 0x60 shr
+    gas call
+    pop 0x04 mstore
+    mstore
+    callvalue 0x20 mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_57:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    [V2_Swap_Sig]
+    callvalue
+    add
+    returndatasize
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    0x2b calldataload
+    chainid calldataload chainid byte mstore
+    dup4 0x04 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    0x17 calldataload 0x60 shr
+    gas call
+    pop 0x24 mstore
+    mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_58:
+    returndatasize
+    returndatasize
+    0xa4
+    0x40
+    returndatasize
+    0x03 calldataload 0x60 shr
+    [TRANSFER_SIG] returndatasize mstore
+    0x2b calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload chainid byte mstore
+    dup1 0x04 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    0x17 calldataload 0x60 shr
+    gas call
+    pop
+    callvalue
+    0x2e calldataload chainid byte mstore
+    [V2_Swap_Sig] 0x24 mstore
+    address 0x84 mstore
+    0x80 0xa4 mstore
+    gas call
+    0x30
+    swap1
+    0x2f calldataload chainid byte jumpi
+    0x00 dup1 revert
+
+label_59:
+    chainid 0x24 mstore
+    0x00
+    dup1
+    0xa4
+    0x40
+    dup3
+    dup6 0x02 add
+    calldataload 0x60 shr
+    [TRANSFER_SIG] dup3 mstore
+    dup7 0x2a add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup8 calldataload chainid byte mstore
+    dup1 0x04 mstore
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    dup12 0x16 add calldataload 0x60 shr
+    gas call
+    pop
+    0x00 0x44 mstore
+    0x00 0x64 mstore
+    dup7 0x13 add
+    calldataload
+    0x000000000000000000000000000000000000000000000000000000ffffffffff
+    and
+    dup8 0x32 add
+    calldataload chainid byte mstore
+    [V2_Swap_Sig] 0x24 mstore
+    address 0x84 mstore
+    0x80 0xa4 mstore
+    0x00 0xc4 mstore
+    gas call
+    swap1 0x34 add
+    swap1
+    dup2 calldataload 0x00 byte jumpi
+    chainid dup1 revert
+
+label_60:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    [V2_Swap_Sig]
+    returndatasize
+    returndatasize
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    0x2b calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload chainid byte mstore
+    dup5 0x04 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    0x17 calldataload 0x60 shr
+    gas call
+    pop 0x04 mstore
+    0x24 mstore
+    mstore
+    callvalue
+    0x2e calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    stop_handler jumpi
+    0x00 dup1 revert
+
+label_61:
+    returndatasize
+    returndatasize
+    0xa4
+    returndatasize
+    returndatasize
+    0x03 calldataload 0x60 shr
+    [V2_Swap_Sig]
+    returndatasize
+    returndatasize
+    returndatasize
+    [TRANSFER_SIG] returndatasize mstore
+    0x2b calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    chainid calldataload chainid byte mstore
+    dup5 0x04 mstore
+    returndatasize
+    returndatasize
+    0x44
+    returndatasize
+    returndatasize
+    0x17 calldataload 0x60 shr
+    gas call
+    pop 0x04 mstore
+    0x24 mstore
+    mstore
+    callvalue
+    0x2e calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    gas call
+    0x30
+    swap1
+    0x2f calldataload chainid byte jumpi
+    0x00 dup1 revert
+
+label_62:
+    0x00
+    dup1
+    0xa4
+    dup2
+    dup1
+    dup6 0x02 add calldataload 0x60 shr
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    [TRANSFER_SIG] 0x00 mstore
+    dup7 0x2a add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup8
+    calldataload chainid byte mstore
+    dup1 0x04 mstore
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    dup12 0x16 add calldataload 0x60 shr
+    gas call
+    pop
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    [V2_Swap_Sig] 0x00 mstore
+    dup7 0x13 add
+    calldataload 0xffffffffff and
+    dup8 0x32 add calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    gas call
+    swap1 0x34 add
+    swap1
+    dup2 calldataload 0x00 byte jumpi
+    0x00 dup1 revert
+
+label_63:
+    0x02
+    chainid calldataload chainid byte
+    jump
+
+label_64:
+    [TRANSFER_FROM_SIG] 0x00 mstore
+    address 0x04 mstore
+    dup1 0x08 add
+    calldataload 0x60 shr
+    0x24 mstore
+    0x00 0x44 mstore
+    dup1
+    chainid add calldataload
+    0xffffffffff000000000000000000000000000000000000000000000000000000
+    and
+    0x5b mstore
+    0x00
+    dup1
+    0x64
+    dup2
+    dup1
+    [WETH] gas call
+    pop 0x06 add
+    dup1 calldataload push0 byte jump
+
+label_65:
+    [TRANSFER_SIG] 0x00 mstore
+    dup1 0x08 add calldataload 0x60 shr 0x04 mstore
+    0x00 0x24 mstore
+    dup1 chainid add calldataload 0x3f mstore
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    [USDC] gas call
+    pop 0x06 add
+    dup1 calldataload push0 byte jump
+
+label_66:
+    [TRANSFER_SIG] 0x00 mstore
+    dup1 0x08 add calldataload 0x60 shr 0x04 mstore
+    0x00 0x24 mstore
+    dup1 chainid add calldataload 0x3f mstore
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    [USDT] gas call
+    pop 0x06 add
+    dup1 calldataload push0 byte jump
+
+label_67:
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    [V2_Swap_Sig] 0x00 mstore
+    dup1 0x16 add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 calldataload chainid byte mstore
+    dup1 0x1c add calldataload 0x60 shr 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    0x00
+    dup1
+    0xa4
+    dup2
+    dup1
+    dup6 0x02 add calldataload 0x60 shr
+    gas call
+    swap1 0x1a add
+    swap1
+    dup2 calldataload 0x00 byte jumpi
+    0x00 dup1 revert
+
+label_68:
+    0x00 0x04 mstore
+    0x00 0x24 mstore
+    [V2_Swap_Sig] 0x00 mstore
+    dup1 0x16 add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 calldataload chainid byte mstore
+    address 0x44 mstore
+    0x80 0x64 mstore
+    0x00 0x84 mstore
+    0x00
+    dup1
+    0xa4
+    dup2
+    dup1
+    dup6 0x02 add calldataload 0x60 shr
+    gas call
+    swap1 0x1a add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_69:
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    dup6 chainid add calldataload 0x60 shr
+    [APPROVE_ERC20_SIG] dup3 mstore
+    0xba12222222228d8ba445958a75a0704d566bf2c8 0x04 mstore
+    0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 0x24 mstore
+    gas call
+    swap1 0x15 add
+    swap1
+    dup2 calldataload 0x00 byte jumpi
+    0x00 dup1 revert
+
+label_70:
+    0x52bbbe2900000000000000000000000000000000000000000000000000000000 0x00 mstore
+    0xe0 0x04 mstore
+    address 0x24 mstore
+    0x00 0x44 mstore
+    dup1 0x55 add calldataload 0x60 shr 0x64 mstore
+    0x00 0x84 mstore
+    dup1 0x4a add
+    calldataload
+    dup2 0x48 add calldataload chainid byte shr
+    0xff 0xa5 mstore
+    0xa4 mstore
+    dup1 chainid add calldataload 0xe4 mstore
+    chainid 0x0104 mstore
+    dup1 0x21 add calldataload 0x60 shr 0x0124 mstore
+    dup1 0x35 add calldataload 0x60 shr 0x0144 mstore
+    dup1 0x4f add calldataload dup2 0x4d add calldataload chainid byte shr 0x0164 mstore
+    0xc0 0x0184 mstore
+    0x00 0x01a4 mstore
+    0x00
+    dup1
+    0x01c4
+    dup2
+    dup1
+    0xba12222222228d8ba445958a75a0704d566bf2c8
+    gas call
+    swap1 0x53 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_71:
+    0x52bbbe2900000000000000000000000000000000000000000000000000000000 0x00 mstore
+    0xe0 0x04 mstore
+    address 0x24 mstore
+    0x00 0x44 mstore
+    address 0x64 mstore
+    0x00 0x84 mstore
+    dup1 0x4a add calldataload
+    dup2 0x48 add calldataload chainid byte shr
+    0xff 0xa5 mstore
+    0xa4 mstore
+    dup1 chainid add calldataload 0xe4 mstore
+    chainid 0x0104 mstore
+    dup1 0x21 add calldataload 0x60 shr 0x0124 mstore
+    dup1 0x35 add calldataload 0x60 shr 0x0144 mstore
+    dup1 0x4f add calldataload dup2 0x4d add calldataload chainid byte shr 0x0164 mstore
+    0xc0 0x0184 mstore
+    0x00 0x01a4 mstore
+    0x00
+    dup1
+    0x01c4
+    dup2
+    dup1
+    0xba12222222228d8ba445958a75a0704d566bf2c8
+    gas call
+    swap1 0x53 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_72:
+    0x7c5e9ea400000000000000000000000000000000000000000000000000000000 0x00 mstore
+    dup1 0x15 add calldataload 0x60 shr 0x04 mstore
+    dup1 0x2a add calldataload dup2 0x28 add calldataload chainid byte shr 0x24 mstore
+    dup1 0x2e add calldataload 0x60 shr 0x44 mstore
+    0xff 0x65 mstore
+    dup1 0x43 add calldataload
+    dup2 0x41 add calldataload chainid byte shr 0x64 mstore
+    0x00
+    dup1
+    0xa4
+    dup2
+    dup1
+    dup6 chainid add calldataload 0x60 shr gas call
+    swap1 0x47 add
+    swap1 dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_73:
+    [APPROVE_ERC20_SIG] 0x00 mstore
+    dup1 0x02 add calldataload 0x60 shr 0x04 mstore
+    0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 0x24 mstore
+    0x00
+    dup1
+    0x44
+    dup2
+    dup1
+    dup6 0x16 add calldataload 0x60 shr
+    gas call
+    swap1 chainid add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    0x00 dup1 revert
+
+label_74:
+    [TRANSFER_SIG] push0 mstore
+    dup1 0x1c add calldataload 0x60 shr 0x04 mstore
+    chainid 0x24 mstore
+    dup1 0x16 add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 calldataload chainid byte mstore
+    push0
+    dup1
+    0x44
+    dup2
+    dup1
+    dup6 0x02 add calldataload 0x60 shr
+    gas
+    call
+    swap1 0x1a add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 dup1 revert
+
+label_75:
+    origin [SEARCHER_0] eq
+    0x84 calldataload 0x60 shr push0 mstore // token out
+    0x98 calldataload 0x60 shr 0x20 mstore // weth
+    0xac calldataload 0xf0 shr 0x40 mstore // fee
+    0x60
+    push0
+    sha3
+    0xff1f98431c8ad98523631ae4a59f267346ea31f9840000000000000000000000 push0 mstore
+    0x15 mstore
+    [PAIR_INIT_CODE_HASH] 0x35 mstore
+    0x55
+    push0
+    sha3
+    0xffffffffffffffffffffffffffffffffffffffff
+    and
+    caller
+    eq
+    and
+    0xae calldataload 0xf0 shr jumpi
+
+    0x15 mload
+    0xff41ff9aa7e16b8b1a8a8dc4f0efacd93d02d071c90000000000000000000000 push0 mstore
+    0x15 mstore
+    0x6ce8eb472fa82df5469c6ab6d485f17c3ad13c8cd7af59b3d4a8026c5ce0f7e2
+    0x35 mstore
+    0x55
+    push0
+    sha3
+    0xffffffffffffffffffffffffffffffffffffffff
+    and
+    caller
+    eq
+    origin
+    [SEARCHER_0]
+    eq
+    and
+    0xae calldataload 0xf0 shr jumpi
+    0x15 mload
+    0xffbaceb8ec6b9355dfc0269c18bac9d6e2bdc29c4f0000000000000000000000 push0 mstore
+    0x15 mstore
+    [PAIR_INIT_CODE_HASH] 0x35 mstore
+    0x55
+    push0
+    sha3
+    0xffffffffffffffffffffffffffffffffffffffff
+    and
+    caller
+    eq
+    [SEARCHER_0] origin eq
+    and
+    0xae calldataload 0xf0 shr jumpi
+    stop_handler jump
+
+label_76:
+    [TRANSFER_FROM_SIG] push0 mstore
+    address 0x04 mstore
+    caller 0x24 mstore
+    0x04 calldataload 0x44 mstore
+    push0
+    push0
+    0x64
+    push0
+    push0
+    [WETH] gas call
+    stop_handler jumpi
+    push0 push0 revert
+
+label_77:
+    [TRANSFER_FROM_SIG] push0 mstore
+    address 0x04 mstore
+    caller 0x24 mstore
+    0x24 calldataload 0x44 mstore
+    push0
+    push0
+    0x64
+    push0
+    push0
+    [WETH] gas call
+    stop_handler jumpi
+    push0 push0 revert
+
+label_78:
+    [TRANSFER_SIG] push0 mstore
+    caller 0x04 mstore
+    0x04 calldataload 0x24 mstore
+    push0
+    push0
+    0x44
+    push0
+    push0
+    0x84 calldataload 0x60 shr
+    gas call
+    stop_handler jumpi
+    push0 push0 revert
+
+label_79:
+    [TRANSFER_SIG] push0 mstore
+    caller 0x04 mstore
+    0x24 calldataload 0x24 mstore
+    push0
+    push0
+    0x44
+    push0
+    push0
+    0x98 calldataload 0x60 shr
+    gas call
+    stop_handler jumpi
+    push0 push0 revert
+
+label_80:
+    [TRANSFER_SIG] push0 mstore
+    caller 0x04 mstore
+    0x04 calldataload 0x24 mstore
+    push0
+    push0
+    0x44
+    push0
+    push0
+    0x84 calldataload 0x60 shr
+    gas call
+    0x24 calldataload 0x24 mstore
+    push0
+    push0
+    0x44
+    push0
+    push0
+    0x98 calldataload 0x60 shr
+    gas call
+    and
+    stop_handler jumpi
+    push0 push0 revert
+
+label_81:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    chainid 0x24 mstore
+    0x17 calldataload 0x16 calldataload push0 byte shr push0 sub 0x44 mstore
+    [MIN_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    [WETH_32BYTES] 0xc4 mstore
+    0x1b calldataload 0x150e0000000000000000 add
+    0xd8 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    0x02 calldataload 0x60 shr
+    gas call
+    push0 mload
+    callvalue 0x20 shl
+    gt
+    and
+    stop_handler jumpi
+    push0 push0 revert
+
+// 0x09
+// cf
+// c34322097f48f2a42b471e0e892e8cf0c7e35ebb
+// a4c35dff00 // 5 bytes
+// 8526be2379e853d5cf02f9823bb9690e1a6ff9e2 => token out
+// 2710 // feee
+label_82:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    callvalue 0x20 shl 0x44 mstore
+    [MAX_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    0x1b calldataload 0xc4 mstore // token out + fee
+    0x2f calldataload 0xa0 shr // fee
+    [WETH_32BYTES] add // 0x weth 000000 fee
+    0x15630000000000000000 add
+    0xd8 mstore // => token out, weth, fee
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    0x02 calldataload 0x60 shr
+    gas call
+    push0 mload push0 sub
+    0x17 calldataload
+    0x16 calldataload push0 byte shr
+    lt
+    and
+    stop_handler jumpi
+    push0 push0 revert
+
+label_83:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    0x17 calldataload
+    0x16 calldataload push0 byte shr 0x44 mstore
+    [MAX_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    [WETH_32BYTES] 0xc4 mstore
+    0x1b calldataload 0x15fa0000000000000000 add 0xd8 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    0x02 calldataload 0x60 shr
+    gas call
+    push0 mload
+    push0 sub
+    callvalue 0x20 shl
+    lt
+    and
+    stop_handler jumpi
+    push0 push0 revert
+
+label_84:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    chainid 0x24 mstore
+    callvalue 0x20 shl
+    push0 sub 0x44 mstore
+    [MIN_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    0x1b calldataload 0xc4 mstore
+    [WETH_32BYTES]
+    0x2f calldataload 0xa0 shr add
+    0x15b80000000000000000 add
+    0xd8 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    0x02 calldataload 0x60 shr
+    gas call
+    push0 mload
+    0x17 calldataload
+    0x16 calldataload
+    push0 byte shr
+    gt
+    and
+    stop_handler jumpi
+    push0 push0 revert
+
+label_85:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    chainid 0x24 mstore
+    dup1 0x1b add calldataload
+    dup2 0x1a add
+    calldataload push0 byte shr
+    push0 sub 0x44 mstore
+    [MIN_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    dup1 0x1f add
+    calldataload 0xc4 mstore
+    dup1 0x3f add
+    calldataload
+    0xffffffffffffffffffff00000000000000000000000000000000000000000000
+    and
+    0x15b80000000000000000000000000000000000000000 add
+    0xe4 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    dup6 chainid add
+    calldataload 0x60 shr
+    gas call
+    push0 mload
+    dup3 0x16 add calldataload
+    dup4 0x15 add calldataload
+    push0 byte shr
+    gt
+    and
+    swap1 0x49 add
+    swap1
+    dup2 calldataload
+    push0 byte jumpi
+    push0 push0 revert
+
+label_86:
+    [V3_SWAP_SIG] push0 mstore
+    dup1 0x4b add calldataload 0x60 shr 0x04 mstore
+    chainid 0x24 mstore
+    dup1 0x1b add calldataload
+    dup2 0x1a add calldataload push0 byte shr
+    push0 sub 0x44 mstore
+    [MIN_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    dup1 0x1f add
+    calldataload 0xc4 mstore
+    dup1 0x3f add
+    calldataload
+    0xffffffffffffffffffff00000000000000000000000000000000000000000000
+    and
+    0x15b80000000000000000000000000000000000000000
+    add
+    0xe4 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    dup6 chainid add calldataload 0x60 shr
+    gas call
+    push0
+    mload
+    dup3 0x16 add
+    calldataload
+    dup4 0x15 add
+    calldataload push0 byte shr
+    gt
+    and
+    swap1 0x49 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 push0 revert
+
+label_87:
+    [V3_SWAP_SIG] push0 mstore
+    address 0x04 mstore
+    push0 0x24 mstore
+    dup1 0x16 add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 0x15 add calldataload push0 byte shr 0x44 mstore
+    [MAX_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    dup1 0x1f add
+    calldataload 0xc4 mstore
+    dup1 0x3f add calldataload
+    0xffffffffffffffffffff00000000000000000000000000000000000000000000
+    and
+    0x15fa0000000000000000000000000000000000000000
+    add
+    0xe4 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    dup6 chainid add calldataload 0x60 shr
+    gas call
+    push0 mload
+    push0 sub
+    dup3 0x1b add calldataload
+    dup4 0x1a add calldataload push0 byte shr
+    lt
+    and
+    swap1 0x49 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 push0 revert
+
+label_88:
+    [V3_SWAP_SIG] push0 mstore
+    dup1 0x4b add
+    calldataload 0x60 shr 0x04 mstore
+    push0 0x24 mstore
+    dup1 0x16 add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 0x15 add calldataload push0 byte shr 0x44 mstore
+    [MAX_SQRT_PRICE_LIMIT_X96] 0x64 mstore
+    0xa0 0x84 mstore
+    0x2c 0xa4 mstore
+    dup1 0x1f add
+    calldataload 0xc4 mstore
+    dup1 0x3f add calldataload
+    0xffffffffffffffffffff00000000000000000000000000000000000000000000
+    and
+    0x15fa0000000000000000000000000000000000000000
+    add
+    0xe4 mstore
+    0x40
+    push0
+    0xf0
+    push0
+    push0
+    dup6 chainid add calldataload 0x60 shr
+    gas call
+    push0 mload
+    push0 sub
+    dup3 0x1b add calldataload
+    dup4 0x1a add calldataload push0 byte shr lt
+    and
+    swap1 0x49 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 push0 revert
+
+label_89:
+    [MINT_SIG] push0 mstore
+    address 0x04 mstore
+    dup1 chainid add calldataload 0xe8 shr
+    0x02 signextend 0x24 mstore
+    dup1 0x04 add calldataload 0xe8 shr
+    0x02 signextend 0x44 mstore
+    dup1 0x08 add
+    calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 0x07 add calldataload push0 byte shr 0x64 mstore
+    0x163c000000000000000000000000000000000000000000000000000000000000
+    0xee mstore 0x40
+    push0
+    0xf0
+    push0
+    push0
+    0x48 dup7 sub calldataload 0x60 shr
+    gas call
+    push0 mload
+    dup3 0x0d add calldataload
+    dup4 0x0c add calldataload push0 byte shr
+    gt
+    0x20 mload
+    dup4 0x12 add calldataload
+    dup5 0x11 add calldataload push0 byte shr
+    gt
+    and
+    and
+    swap1 0x16 add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 push0 revert
+
+label_90:
+    [BURN_SIG] 0x20 mstore
+    dup1 0x15 add calldataload 0xe8 shr
+    0x02 signextend 0x24 mstore
+    dup1 0x18 add calldataload 0xe8 shr
+    0x02 signextend 0x44 mstore
+    dup1 0x1c add calldataload
+    0xffffffff00000000000000000000000000000000000000000000000000000000
+    and
+    dup2 0x1b add calldataload push0 byte shr 0x64 mstore
+    0x40
+    0x64
+    dup1
+    0x20
+    push0
+    dup6 chainid add calldataload 0x60 shr
+    gas call
+    0x64 mload
+    dup3 0x21 add calldataload
+    dup4 0x20 add
+    calldataload push0 byte shr
+    dup1
+    iszero
+    swap2
+    gt
+    or
+    0x84 mload
+    dup4 0x26 add calldataload
+    dup5 0x25 add calldataload push0 byte shr
+    dup1
+    iszero
+    swap2
+    gt
+    or
+    and
+    and
+    [COLLECT_SIG] push0 mstore
+    address 0x04 mstore
+    0xffffffffffffffffffffffffffffffff
+    dup1 0x64 mstore
+    0x84 mstore
+    push0
+    push0
+    0xa4
+    push0
+    push0
+    dup7
+    chainid add calldataload 0x60 shr
+    gas call
+    and
+    swap1 0x2a add
+    swap1
+    dup2 calldataload push0 byte jumpi
+    push0 push0 revert
+}
